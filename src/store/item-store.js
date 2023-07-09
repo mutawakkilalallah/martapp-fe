@@ -65,9 +65,13 @@ export const useItemStore = defineStore("itemStore", {
     },
     async getFilter() {
       try {
-        const brand = await axios.get("http://martapi-be.test/api/brand");
+        const brand = await axios.get(
+          "https://mart-api.kildev.my.id/api/brand"
+        );
         this.brandFilter = brand.data.data;
-        const category = await axios.get("http://martapi-be.test/api/category");
+        const category = await axios.get(
+          "https://mart-api.kildev.my.id/api/category"
+        );
         this.categoryFilter = category.data.data;
       } catch (err) {
         toast.error(err.response.data.message);
@@ -75,16 +79,19 @@ export const useItemStore = defineStore("itemStore", {
     },
     async getData() {
       try {
-        const result = await axios.get("http://martapi-be.test/api/item", {
-          params: {
-            cari: this.keyword,
-            brand: this.brand,
-            category: this.category,
-            order: this.order,
-            page: this.page,
-            limit: 1,
-          },
-        });
+        const result = await axios.get(
+          "https://mart-api.kildev.my.id/api/item",
+          {
+            params: {
+              cari: this.keyword,
+              brand: this.brand,
+              category: this.category,
+              order: this.order,
+              page: this.page,
+              limit: 1,
+            },
+          }
+        );
         this.getFilter();
         this.data = result.data.data;
         this.totalPage = result.data.data.links.length - 2;
@@ -94,7 +101,9 @@ export const useItemStore = defineStore("itemStore", {
     },
     async getDetailData(id) {
       try {
-        const result = await axios.get("http://martapi-be.test/api/item/" + id);
+        const result = await axios.get(
+          "https://mart-api.kildev.my.id/api/item/" + id
+        );
         this.detailData = result.data.data;
       } catch (err) {
         toast.error(err.response.data.message);
@@ -103,7 +112,7 @@ export const useItemStore = defineStore("itemStore", {
     async addItem() {
       try {
         const result = await axios.post(
-          "http://martapi-be.test/api/item",
+          "https://mart-api.kildev.my.id/api/item",
           this.addData
         );
         this.resetForm();
@@ -117,7 +126,7 @@ export const useItemStore = defineStore("itemStore", {
       try {
         this.addDataVariant.item_id = this.detailData.id;
         const result = await axios.post(
-          "http://martapi-be.test/api/item-variant",
+          "https://mart-api.kildev.my.id/api/item-variant",
           this.addDataVariant
         );
         this.resetFormVariant();
@@ -130,7 +139,7 @@ export const useItemStore = defineStore("itemStore", {
     async deleteItem(id) {
       try {
         const result = await axios.delete(
-          "http://martapi-be.test/api/item/" + id
+          "https://mart-api.kildev.my.id/api/item/" + id
         );
         this.getData();
         toast.success(result.data.message);
@@ -140,7 +149,9 @@ export const useItemStore = defineStore("itemStore", {
     },
     async openFormEdit(id) {
       try {
-        const result = await axios.get("http://martapi-be.test/api/item/" + id);
+        const result = await axios.get(
+          "https://mart-api.kildev.my.id/api/item/" + id
+        );
         this.editData.id = result.data.data.id;
         this.editData.name = result.data.data.name;
         this.editData.number = result.data.data.number;
@@ -154,7 +165,7 @@ export const useItemStore = defineStore("itemStore", {
     async updateBrand(id) {
       try {
         const result = await axios.put(
-          "http://martapi-be.test/api/item/" + id,
+          "https://mart-api.kildev.my.id/api/item/" + id,
           this.editData
         );
         this.showFormEdit = false;
@@ -167,7 +178,7 @@ export const useItemStore = defineStore("itemStore", {
     async deleteItem(id) {
       try {
         const result = await axios.delete(
-          "http://martapi-be.test/api/item/" + id
+          "https://mart-api.kildev.my.id/api/item/" + id
         );
         this.getData();
         toast.success(result.data.message);
@@ -179,7 +190,7 @@ export const useItemStore = defineStore("itemStore", {
       try {
         this.addDataVariant.item_id = this.detailData.id;
         const result = await axios.post(
-          "http://martapi-be.test/api/item-variant",
+          "https://mart-api.kildev.my.id/api/item-variant",
           this.addDataVariant
         );
         this.resetFormVariant();
@@ -192,7 +203,7 @@ export const useItemStore = defineStore("itemStore", {
     async deleteVariant(id, itmId) {
       try {
         const result = await axios.delete(
-          "http://martapi-be.test/api/item-variant/" + id
+          "https://mart-api.kildev.my.id/api/item-variant/" + id
         );
         this.getDetailData(itmId);
         toast.success(result.data.message);
@@ -210,7 +221,7 @@ export const useItemStore = defineStore("itemStore", {
     async updateVariant(id, itmId) {
       try {
         const result = await axios.put(
-          "http://martapi-be.test/api/item-variant/" + id,
+          "https://mart-api.kildev.my.id/api/item-variant/" + id,
           this.editDataVariant
         );
         this.showFormEditVariant = false;

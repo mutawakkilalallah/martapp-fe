@@ -25,7 +25,9 @@ export const useCategoryStore = defineStore("categoryStore", {
     },
     async getData() {
       try {
-        const result = await axios.get("http://martapi-be.test/api/category");
+        const result = await axios.get(
+          "https://mart-api.kildev.my.id/api/category"
+        );
         this.data = result.data.data;
       } catch (err) {
         toast.error(err.response.data.message);
@@ -34,7 +36,7 @@ export const useCategoryStore = defineStore("categoryStore", {
     async addCategory() {
       try {
         const result = await axios.post(
-          "http://martapi-be.test/api/category",
+          "https://mart-api.kildev.my.id/api/category",
           this.addData
         );
         this.resetForm();
@@ -47,7 +49,7 @@ export const useCategoryStore = defineStore("categoryStore", {
     async openFormEdit(id) {
       try {
         const result = await axios.get(
-          "http://martapi-be.test/api/category/" + id
+          "https://mart-api.kildev.my.id/api/category/" + id
         );
         this.editData.id = result.data.data.id;
         this.editData.name = result.data.data.name;
@@ -59,7 +61,7 @@ export const useCategoryStore = defineStore("categoryStore", {
     async updateCategory(id) {
       try {
         const result = await axios.put(
-          "http://martapi-be.test/api/category/" + id,
+          "https://mart-api.kildev.my.id/api/category/" + id,
           this.editData
         );
         this.showFormEdit = false;
@@ -72,7 +74,7 @@ export const useCategoryStore = defineStore("categoryStore", {
     async deleteCategory(id) {
       try {
         const result = await axios.delete(
-          "http://martapi-be.test/api/category/" + id
+          "https://mart-api.kildev.my.id/api/category/" + id
         );
         this.getData();
         toast.success(result.data.message);
