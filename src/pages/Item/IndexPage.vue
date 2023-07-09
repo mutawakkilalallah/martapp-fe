@@ -66,13 +66,13 @@
       <v-col cols="12" sm="3">
         <v-text-field
           v-model="itemStore.addData.name"
-          label="Nama Brand"
+          label="Name Item"
         ></v-text-field>
       </v-col>
       <v-col cols="12" sm="3">
         <v-text-field
           v-model="itemStore.addData.number"
-          label="Nomer Brand"
+          label="Nomer Item"
         ></v-text-field>
       </v-col>
       <v-col cols="12" sm="2" class="px-5 pt-5">
@@ -105,13 +105,13 @@
       <v-col cols="12" sm="3">
         <v-text-field
           v-model="itemStore.editData.name"
-          label="Nama Brand"
+          label="Name Item"
         ></v-text-field>
       </v-col>
       <v-col cols="12" sm="3">
         <v-text-field
           v-model="itemStore.editData.number"
-          label="Nomer Brand"
+          label="Nomer Item"
         ></v-text-field>
       </v-col>
       <v-col cols="12" sm="2" class="px-5 pt-5">

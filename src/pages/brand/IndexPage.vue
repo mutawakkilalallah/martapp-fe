@@ -23,7 +23,7 @@
       <v-col cols="12" sm="4">
         <v-text-field
           v-model="brandStore.addData.name"
-          label="Nama Brand"
+          label="Name Brand"
         ></v-text-field>
       </v-col>
       <v-col cols="12" sm="4">
@@ -36,7 +36,7 @@
       <v-col cols="12" sm="4">
         <v-text-field
           v-model="brandStore.editData.name"
-          label="Nama Brand"
+          label="Name Brand"
         ></v-text-field>
       </v-col>
       <v-col cols="12" sm="4">
